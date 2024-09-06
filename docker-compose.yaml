@@ -1,0 +1,25 @@
+services:
+  dl_workbench:
+    image: dl_workbench:cuda-12.4
+    container_name: dl_workbench-cuda-12.4
+    build:
+      context: .
+      shm_size: "30gb"
+      network: host
+      dockerfile: Dockerfile
+    runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+      JUPYTER_TOKEN: 6bfd5669a770711c1e8cc6ca4b1ab8691f3f59f8531fb2e64a5ea970a85584c5
+    restart: unless-stopped
+    shm_size: '32gb'
+    ports:
+      - "8888:8888"
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - /mnt/data:/mnt/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
