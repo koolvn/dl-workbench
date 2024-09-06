@@ -1,0 +1,9 @@
+notebook~=6.0
+numpy~=1.24
+pandas
+matplotlib
+seaborn
+tqdm
+livelossplot
+plotly
+scikit-learn
