@@ -9,5 +9,6 @@ openssl rand -hex 32
 
 ### Start container
 ```bash
+xhost +
 docker compose up --build -d
 ```
